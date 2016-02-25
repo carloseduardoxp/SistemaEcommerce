@@ -16,5 +16,17 @@ public class ClienteFacade {
 		return Arrays.asList(new Cliente(1,"carlos","carlos@gmail.com"),
 							 new Cliente(2,"fulano","fulano@gmail.com"));
 	}
+	
+	@WebMethod(operationName="getClientesParametro")
+	public List<Cliente> getClientes(Cliente cliente) {
+		if (cliente.getCodigo() == null) {
+			return Arrays.asList(new Cliente(0,"cliente não existe",""));
+		}
+		if (cliente.getCodigo() == 1) {
+			return Arrays.asList(new Cliente(1,"carlos","carlos@gmail.com"));
+		} else {
+			return Arrays.asList(new Cliente(3,"novo cliente","novo@gmail.com"));
+		}
+	}
 
 }
