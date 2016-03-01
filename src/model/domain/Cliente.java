@@ -2,6 +2,9 @@ package model.domain;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Cliente implements Serializable {
 	
 	/**
