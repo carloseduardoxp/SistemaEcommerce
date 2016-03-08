@@ -5,10 +5,14 @@ import java.util.List;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
+import javax.xml.ws.BindingType;
 
 import model.domain.Cliente;
 
 @WebService(serviceName="ws/cliente")
+@SOAPBinding(style = SOAPBinding.Style.RPC)
+@BindingType(value= javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_BINDING)
 public class ClienteFacade {
 	
 	@WebMethod
