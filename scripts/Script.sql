@@ -51,7 +51,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `TB_CLIENTE`;
 CREATE TABLE `TB_CLIENTE` (
-  `CD_CLIENTE` char(5) NOT NULL,
+  `CD_CLIENTE` int(11) NOT NULL auto_increment,
   `NM_CLIENTE` varchar(30) default NULL,
   `DS_CARGO` varchar(30) default NULL,
   `DS_ENDERECO` varchar(60) default NULL,
@@ -109,9 +109,9 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `TB_PEDIDO`;
-CREATE TABLE `TB_PEDIDO` (
-  `NR_PEDIDO` int(11) NOT NULL auto_increment,
-  `CD_CLIENTE` char(5) default NULL,
+CREATE TABLE `TB_PEDIDO` (int(11) NOT NULL auto_increment,
+  `NR_PEDIDO` 
+  `CD_CLIENTE` int(11) default NULL,
   `DT_PEDIDO` datetime default NULL,
   PRIMARY KEY  (`NR_PEDIDO`),
   KEY `CustomerID` (`CD_CLIENTE`),
