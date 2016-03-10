@@ -109,8 +109,8 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `TB_PEDIDO`;
-CREATE TABLE `TB_PEDIDO` (int(11) NOT NULL auto_increment,
-  `NR_PEDIDO` 
+CREATE TABLE `TB_PEDIDO` (
+  `NR_PEDIDO` int(11) NOT NULL auto_increment,
   `CD_CLIENTE` int(11) default NULL,
   `DT_PEDIDO` datetime default NULL,
   PRIMARY KEY  (`NR_PEDIDO`),

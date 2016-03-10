@@ -14,11 +14,12 @@ import model.domain.Cliente;
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 @BindingType(value= javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_BINDING)
 public class ClienteFacade {
-	
+	/*
 	@WebMethod
 	public List<Cliente> getClientes() {
 		return Arrays.asList(new Cliente(1,"carlos","carlos@gmail.com"),
 							 new Cliente(2,"fulano","fulano@gmail.com"));
+		return null;
 	}
 	
 	@WebMethod(operationName="getClientesParametro")
@@ -31,6 +32,6 @@ public class ClienteFacade {
 		} else {
 			return Arrays.asList(new Cliente(3,"novo cliente","novo@gmail.com"));
 		}
-	}
+	}*/
 
 }
