@@ -7,5 +7,7 @@ import model.domain.Cliente;
 public interface ClienteDao {
 
 	List<Cliente> getClientes(Cliente cliente);
+	
+	public void excluir(Cliente cliente);
 
 }
