@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html ng-app="clienteModule">
+<head>
+	<meta-charset="utf-8">
+	<title>Cliente</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script src="js/angular.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="control/clienteControl.js"></script>
+</head>
+<body ng-controller="clienteControl">
+	<div ng-include="'menu.html'"></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Cadastro de cliente</div>
+		<div class="panel-body">
+			<div>
+			  <!-- Nav tabs -->
+			  <ul class="nav nav-tabs" role="tablist">
+			    <li role="presentation" class="active">
+			    	<a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a>
+			    </li>
+			    <li role="presentation">
+			    	<a href="#dados" aria-controls="dados" role="tab" data-toggle="tab">Dados</a>
+			    </li>
+			  </ul>
+			  <!-- Tab panes -->
+			  <div class="tab-content">
+			    <div role="tabpanel" class="tab-pane active" id="cadastro">
+					<br>
+					<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
+					<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
+					<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
+					<button type="button" class="btn btn-warning" ng-click="pesquisar()">Pesqusiar</button>
+					<hr/>
+			    	<form>
+					  <div class="form-group col-md-2">
+					    <label for="exampleInputCodigo">Codigo</label>
+					    <input type="number" disabled="true" class="form-control" ng-model="cliente.codigo" placeholder="Codigo">
+					  </div>
+					  
+					  <div class="form-group col-md-6">
+					    <label for="exampleInputNome">Nome</label>
+					    <input type="text" class="form-control" ng-model="cliente.nome" placeholder="Insira o Nome">
+					  </div>
+					  
+					  <div class="form-group col-md-4">
+					    <label for="exampleInputCargo">Cargo</label>
+					    <input type="text" class="form-control" ng-model="cliente.cargo" placeholder="Insira o Cargo">
+					  </div>
+
+					  <div class="form-group col-md-6">
+					    <label for="exampleInputEndereco">Endereco</label>
+					    <input type="text" class="form-control" ng-model="cliente.endereco" placeholder="Insira o Endereco">
+					  </div>
+
+					  <div class="form-group col-md-4">
+					    <label for="exampleInputCidade">Cidade</label>
+					    <input type="text" class="form-control" ng-model="cliente.cidade" placeholder="Insira a Cidade">
+					  </div>
+
+					  <div class="form-group col-md-2">
+					    <label for="exampleInputCep">Cep</label>
+					    <input type="text" class="form-control" ng-model="cliente.cep" placeholder="Insira o Cep">
+					  </div>
+
+					  <div class="form-group col-md-4">
+					    <label for="exampleInputPais">Pais</label>
+					    <input type="text" class="form-control" ng-model="cliente.pais" placeholder="Insira o Pais">
+					  </div>
+
+					  <div class="form-group col-md-4">
+					    <label for="exampleInputTelefone">Telefone</label>
+					    <input type="text" class="form-control" ng-model="cliente.telefone" placeholder="Insira o Telefone">
+					  </div>
+
+					  <div class="form-group col-md-4">
+					    <label for="exampleInputFax">Fax</label>
+					    <input type="text" class="form-control" ng-model="cliente.fax" placeholder="Insira o Fax">
+					  </div>
+					</form>
+			    </div>
+			    <div role="tabpanel" class="tab-pane" id="dados">
+				<br>
+				<input type="text" class="form-control" ng-model="criterio" 
+				placeholder="O que voce esta procurando?" /><br>
+			    	<table class="table table-hover">
+			    		<th>Codigo</th><th>Nome</th><th>Cargo</th><th>Endereco</th><th>Cidade</th><th>CEP</th><th>Pais</th><th>Telefone</th><th>Fax</th>
+
+			    		<tr ng-repeat="clienteTabela in clientes | filter:criterio" ng-click="seleciona(clienteTabela);">
+			    			<td>{{clienteTabela.codigo}}</td><td>{{clienteTabela.nome}}</td><td>{{clienteTabela.cargo}}</td><td>{{clienteTabela.endereco}}</td>
+			    			<td>{{clienteTabela.cidade}}</td><td>{{clienteTabela.cep}}</td><td>{{clienteTabela.pais}}</td><td>{{clienteTabela.telefone}}</td>
+			    			<td>{{clienteTabela.fax}}</td>
+			    		</tr>
+					</table>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
