@@ -1,12 +1,15 @@
 package model.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -43,11 +46,8 @@ public class Cliente implements Serializable {
 	@Column(name="DS_PAIS")
 	private String pais;
 	
-	@Column(name="DS_TELEFONE")
-	private String telefone;
-	
-	@Column(name="DS_FAX")
-	private String fax;
+	@OneToMany(mappedBy="cliente",fetch=FetchType.EAGER)
+	private List<Telefone> telefones;
 
 	public Cliente() {
 		super();
@@ -109,20 +109,12 @@ public class Cliente implements Serializable {
 		this.pais = pais;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	public List<Telefone> getTelefones() {
+		return telefones;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-	public String getFax() {
-		return fax;
-	}
-
-	public void setFax(String fax) {
-		this.fax = fax;
+	public void setTelefones(List<Telefone> telefones) {
+		this.telefones = telefones;
 	}
 
 	@Override
