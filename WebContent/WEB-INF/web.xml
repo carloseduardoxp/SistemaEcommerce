@@ -36,8 +36,8 @@
 			<url-pattern>/cliente.html</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>admin</role-name>
-			<role-name>cadastro</role-name>
+			<role-name>ECO_admin</role-name>
+			<role-name>ECO_cadastro</role-name>
 		</auth-constraint>
 	</security-constraint>	
 	<security-constraint>
@@ -71,13 +71,13 @@
   </security-constraint>
   
 	<security-role>
-		<role-name>admin</role-name>
+		<role-name>ECO_admin</role-name>
 	</security-role>
 	<security-role>
-		<role-name>consulta</role-name>
+		<role-name>ECO_consulta</role-name>
 	</security-role>
 	<security-role>
-		<role-name>cadastro</role-name>
+		<role-name>ECO_cadastro</role-name>
 	</security-role>
 
 	<login-config>
