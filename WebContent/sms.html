@@ -1,0 +1,124 @@
+<html lang="en" ng-app="smsModule">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Sistema Pedidos - Tela de SMS</title>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script src="js/sms.js"></script>
+
+  </head>
+  <body ng-controller="smsController">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+	<div ng-include src="'menu.html'"></div>
+	
+	<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a></li>
+    <li role="presentation"><a href="#dados" aria-controls="dados" role="tab" data-toggle="tab">Dados</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="cadastro">
+	
+	
+	
+	
+	<form class="form-horizontal">
+	<div class="form-group">
+		<label for="codigo" class="col-sm-1 control-label">Código</label>
+		<div class="col-sm-5">
+			<input type="code" class="form-control" disabled="true" ng-model="sms.codigo" placeholder="Código">
+		</div>	
+	</div>
+	<div class="form-group">
+		<label for="mensagem" class="col-sm-1 control-label">Mensagem</label>
+		<div class="col-sm-5">
+			<textarea class="form-control" ng-model="sms.mensagem" placeholder="Mensagem"></textarea>
+		</div>	
+	</div>
+	<div class="form-group">
+		<label for="nome" class="col-sm-1 control-label">Cliente</label>
+		<div class="col-sm-5">
+			<select class="form-control" 
+			    ng-model="clienteSelecionado"
+				ng-options="cliente.nome for cliente in clientes track by cliente.codigo"
+				ng-change="alteraTelefones();">
+			</select>
+		</div>
+	</div>
+	<div class="form-group">	
+		<div class="col-sm-5">
+			<table class="table table-hover">
+				<tr>	
+					<th>DDD</th>
+					<th>Número</th>
+					<th>Tipo</th>			
+				</tr>
+				<tr ng-repeat="telefone in telefones" 
+				ng-click="selecionaTelefone(telefone);">
+					<td>{{telefone.ddd}}</td>
+					<td>{{telefone.numero}}</td>
+					<td>{{telefone.tipoTelefone}}</td>
+				</tr>
+			</table>						
+		</div>
+	</div>
+		
+	<button type="button" class="btn btn-default" ng-click="novo()">Novo</button>	
+	<button type="submit" ng-disabled="desabilitaSalvar" class="btn btn-default" ng-click="salvar()">Salvar</button>
+</form>
+	
+	
+	
+	</div>
+    <div role="tabpanel" class="tab-pane" id="dados">
+	
+	<div class="form-group">
+		<input type="text" class="form-control" id="pesquisa" placeholder="Digite algo para pesquisar">
+	</div>
+	
+	<table class="table table-hover">
+		<tr>	
+			<th>Código</th>
+			<th>Cliente</th>
+			<th>Telefone</th>
+			<th>Status</th>
+			<th>Mensagem</th>						
+		</tr>
+		<tr ng-repeat="sms in smss" 
+		ng-click="seleciona(sms);">
+			<td>{{sms.codigo}}</td>
+			<td>{{sms.telefone.cliente.nome}}</td>
+			<td>{{sms.telefone.ddd}} 
+			{{sms.telefone.numero}}</td>
+			<td>{{sms.statusSms}}</td>
+			<td>{{sms.mensagem}}</td>
+		</tr>
+	</table>
+	
+	</div>
+  </div>
+
+</div>
+	
+	
+	
+	
+  </body>
+</html>

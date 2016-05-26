@@ -25,6 +25,7 @@ public class Telefone implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="CD_TELEFONE")
 	private Integer codigo;
 	
 	@Column(name="NR_TELEFONE")
