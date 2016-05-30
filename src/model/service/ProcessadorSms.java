@@ -13,19 +13,19 @@ import model.dao.SmsDao;
 import model.domain.Sms;
 import model.domain.StatusSms;
 
-@MessageDriven(name="smsQueueEjb", 
-			mappedName="ejb/smsQueueEjb" , 
-			activationConfig = {
-		 @ActivationConfigProperty(
-				 propertyName = "acknowledgeMode" , 
-				 propertyValue = "Auto-acknowledge" ),
-		 @ActivationConfigProperty(
-				 propertyName = "destinationType" , 
-				 propertyValue = "javax.jms.Queue" ),
-		 @ActivationConfigProperty(
-				 propertyName = "destination" , 
-				 propertyValue = "java:/jms/queue/smsQueue" )
-		})
+//@MessageDriven(name="smsQueueEjb", 
+//			mappedName="ejb/smsQueueEjb" , 
+//			activationConfig = {
+//		 @ActivationConfigProperty(
+//				 propertyName = "acknowledgeMode" , 
+//				 propertyValue = "Auto-acknowledge" ),
+//		 @ActivationConfigProperty(
+//				 propertyName = "destinationType" , 
+//				 propertyValue = "javax.jms.Queue" ),
+//		 @ActivationConfigProperty(
+//				 propertyName = "destination" , 
+//				 propertyValue = "java:/jms/queue/smsQueue" )
+//		})
 public class ProcessadorSms implements MessageListener {
 	
 	@Inject

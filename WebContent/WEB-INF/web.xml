@@ -83,8 +83,7 @@
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<form-login-config>
-			<form-login-page>Seguranca/login.html</form-login-page>
-			<form-error-page>Seguranca/login_erro.html</form-error-page>
+			<form-login-page>login.html</form-login-page>
 		</form-login-config>
 	</login-config>
 
