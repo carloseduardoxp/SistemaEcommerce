@@ -18,10 +18,10 @@ public class SmsServiceImpl implements SmsService {
 	@Inject
 	private SmsDao smsDao;
 	
-	//@Inject
+	@Inject
 	private JMSContext jmsContext;
 	
-	//@Resource(lookup="java:/jms/queue/smsQueue")
+	@Resource(lookup="java:/jms/queue/smsQueue")
 	private Queue fila;
 	
 	/* (non-Javadoc)
