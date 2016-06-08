@@ -26,8 +26,10 @@ smsModule.controller("smsController",
 	
 	$scope.novo = function() {
 		$scope.sms = "";	
-		$scope.clienteSelecionado = "";
-		$scope.telefones = [];
+		$scope.clienteRemetenteSelecionado = "";
+		$scope.clienteDestinatarioSelecionado = "";
+		$scope.telefonesRemetente = [];
+		$scope.telefonesDestinatario = [];
 		$scope.desabilitaSalvar = false;
 	};
 	
@@ -47,12 +49,20 @@ smsModule.controller("smsController",
 		}		
 	};
 	
-	$scope.alteraTelefones = function() {
-		$scope.telefones = $scope.clienteSelecionado.telefones;		
+	$scope.alteraTelefonesRemetente = function() {
+		$scope.telefonesRemetente = $scope.clienteRemetenteSelecionado.telefones;		
 	};
 	
-	$scope.selecionaTelefone = function(telefone) {
-		$scope.sms.telefone = telefone;
+	$scope.alteraTelefonesDestinatario = function() {
+		$scope.telefonesDestinatario = $scope.clienteDestinatarioSelecionado.telefones;		
+	};
+	
+	$scope.selecionaTelefoneRemetente = function(remetente) {
+		$scope.sms.remetente = remetente;
+	};
+	
+	$scope.selecionaTelefoneDestinatario = function(destinatario) {
+		$scope.sms.destinatario = destinatario;
 	};
 		
 	$scope.salvar = function() {

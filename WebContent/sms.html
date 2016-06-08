@@ -59,12 +59,12 @@
 		</div>	
 	</div>
 	<div class="form-group">
-		<label for="nome" class="col-sm-1 control-label">Cliente</label>
+		<label for="nome" class="col-sm-1 control-label">Remetente</label>
 		<div class="col-sm-5">
 			<select class="form-control" 
-			    ng-model="clienteSelecionado"
+			    ng-model="clienteRemetenteSelecionado"
 				ng-options="cliente.nome for cliente in clientes track by cliente.codigo"
-				ng-change="alteraTelefones();">
+				ng-change="alteraTelefonesRemetente();">
 			</select>
 		</div>
 	</div>
@@ -72,15 +72,40 @@
 		<div class="col-sm-5">
 			<table class="table table-hover">
 				<tr>	
-					<th>DDD</th>
 					<th>Número</th>
 					<th>Tipo</th>			
 				</tr>
-				<tr ng-repeat="telefone in telefones" 
-				ng-click="selecionaTelefone(telefone);">
-					<td>{{telefone.ddd}}</td>
+				<tr ng-repeat="telefone in telefonesRemetente" 
+				ng-click="selecionaTelefoneRemetente(telefone);">
 					<td>{{telefone.numero}}</td>
-					<td>{{telefone.tipoTelefone}}</td>
+					<td>{{telefone.tipo}}</td>
+				</tr>
+			</table>						
+		</div>
+	</div>
+	
+	
+	<div class="form-group">
+		<label for="nome" class="col-sm-1 control-label">Destinatário</label>
+		<div class="col-sm-5">
+			<select class="form-control" 
+			    ng-model="clienteDestinatarioSelecionado"
+				ng-options="cliente.nome for cliente in clientes track by cliente.codigo"
+				ng-change="alteraTelefonesDestinatario();">
+			</select>
+		</div>
+	</div>
+	<div class="form-group">	
+		<div class="col-sm-5">
+			<table class="table table-hover">
+				<tr>	
+					<th>Número</th>
+					<th>Tipo</th>			
+				</tr>
+				<tr ng-repeat="telefone in telefonesDestinatario" 
+				ng-click="selecionaTelefoneDestinatario(telefone);">
+					<td>{{telefone.numero}}</td>
+					<td>{{telefone.tipo}}</td>
 				</tr>
 			</table>						
 		</div>

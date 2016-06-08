@@ -1,5 +1,6 @@
 use dbecommerce;
 INSERT INTO `TB_CLIENTE` VALUES ('1','Sales Representative','12209','Berlin','Obere Str. 57','Maria Anders','Germany');
+INSERT INTO `TB_CLIENTE` VALUES ('2','Analista de Sistemas','38400000','Uberlandia','Av. Afonso Pena, 1800','Manoel Alexandre','Brasil');
 
 INSERT INTO TB_PEDIDO VALUES (6,now(),'NOVO',1);
 INSERT INTO TB_PEDIDO VALUES (2,now(),'CANCELADO',1);
@@ -10,6 +11,7 @@ INSERT INTO TB_PEDIDO VALUES (5,now(),'NOVO',1);
 
 INSERT INTO TB_TELEFONE VALUES ('1','98858965','CELULAR',1);
 INSERT INTO TB_TELEFONE VALUES ('2','12312313','RESIDENCIAL',1);
+INSERT INTO TB_TELEFONE VALUES ('3','88585848','CELULAR',2);
 
 INSERT INTO `TB_CATEGORIA` VALUES (1,'Bebidas','Bebidas leves como cafés, chás, cervejas'),(2,'Molhos e Condimentos','Molhos e Condimentos'),(3,'Padaria','bolos, torradas, pães, doces'),(4,'Frios e Laticínios','Queijos, frios, patês'),(5,'Mercearia','Conservas, sopas, cremes, salgadinhos'),(6,'Carne, Avícula e Peixes','Carnes bovinas, carnes suínas, carnes de aves, peixes'),(7,'Higiene e Perfumaria','Produtos de Higiene e Perfumaria'),(8,'Vinho e espumante','Vinhos, vinhos finos, champagnes');
 
