@@ -1,5 +1,5 @@
 use dbecommerce;
-INSERT INTO `TB_CLIENTE` VALUES ('1','Maria Anders','Sales Representative','Obere Str. 57','Berlin','12209','Germany');
+INSERT INTO `TB_CLIENTE` VALUES ('1','Sales Representative','12209','Berlin','Obere Str. 57','Maria Anders','Germany');
 
 INSERT INTO TB_PEDIDO VALUES (6,now(),'NOVO',1);
 INSERT INTO TB_PEDIDO VALUES (2,now(),'CANCELADO',1);

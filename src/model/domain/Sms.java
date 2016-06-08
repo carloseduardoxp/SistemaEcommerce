@@ -34,7 +34,7 @@ public class Sms implements Serializable {
 	private Telefone destinatario;
 	
 	@Column(name="CD_ASSUNTO",nullable=false,length=60)
-	private String assunto; 
+	private String assunto;
 	
 	@Column(name="DS_MENSAGEM",nullable=false,length=255)
 	private String mensagem;
