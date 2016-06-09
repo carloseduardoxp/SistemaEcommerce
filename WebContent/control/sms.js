@@ -54,7 +54,7 @@ smsModule.controller("smsController",
 	};
 	
 	$scope.alteraTelefonesDestinatario = function() {
-		$scope.telefonesDestinatario = $scope.clienteDestinatarioSelecionado.telefones;		
+		$scope.telefonesDestinatario = $scope.clienteDestinatarioSelecionado.telefones;	
 	};
 	
 	$scope.selecionaTelefoneRemetente = function(remetente) {

@@ -42,7 +42,6 @@ public class Telefone implements Serializable {
 	public Telefone() {
 	}
 
-	@XmlTransient
 	public Integer getCodigo() {
 		return codigo;
 	}
