@@ -7,11 +7,15 @@
 	<script src="js/angular.min.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/ui-bootstrap-tpls-0.14.1.min.js"></script>
 	<script src="control/clienteControl.js"></script>
 </head>
 <body ng-controller="clienteControl">
 	<div ng-include="'menu.html'"></div>
 	<div class="panel panel-default">
+		<!-- ALERT -->
+        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+    
 		<div class="panel-heading">Cadastro de cliente</div>
 		<div class="panel-body">
 			<div>
@@ -68,16 +72,7 @@
 					    <label for="exampleInputPais">Pais</label>
 					    <input type="text" class="form-control" ng-model="cliente.pais" placeholder="Insira o Pais">
 					  </div>
-
-					  <div class="form-group col-md-4">
-					    <label for="exampleInputTelefone">Telefone</label>
-					    <input type="text" class="form-control" ng-model="cliente.telefone" placeholder="Insira o Telefone">
-					  </div>
-
-					  <div class="form-group col-md-4">
-					    <label for="exampleInputFax">Fax</label>
-					    <input type="text" class="form-control" ng-model="cliente.fax" placeholder="Insira o Fax">
-					  </div>
+					  
 					</form>
 			    </div>
 			    <div role="tabpanel" class="tab-pane" id="dados">
@@ -85,12 +80,11 @@
 				<input type="text" class="form-control" ng-model="criterio" 
 				placeholder="O que voce esta procurando?" /><br>
 			    	<table class="table table-hover">
-			    		<th>Codigo</th><th>Nome</th><th>Cargo</th><th>Endereco</th><th>Cidade</th><th>CEP</th><th>Pais</th><th>Telefone</th><th>Fax</th>
+			    		<th>Codigo</th><th>Nome</th><th>Cargo</th><th>Endereco</th><th>Cidade</th><th>CEP</th><th>Pais</th>
 
 			    		<tr ng-repeat="clienteTabela in clientes | filter:criterio" ng-click="seleciona(clienteTabela);">
 			    			<td>{{clienteTabela.codigo}}</td><td>{{clienteTabela.nome}}</td><td>{{clienteTabela.cargo}}</td><td>{{clienteTabela.endereco}}</td>
-			    			<td>{{clienteTabela.cidade}}</td><td>{{clienteTabela.cep}}</td><td>{{clienteTabela.pais}}</td><td>{{clienteTabela.telefone}}</td>
-			    			<td>{{clienteTabela.fax}}</td>
+			    			<td>{{clienteTabela.cidade}}</td><td>{{clienteTabela.cep}}</td><td>{{clienteTabela.pais}}</td>
 			    		</tr>
 					</table>
 			    </div>

@@ -11,8 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 @Entity
@@ -29,21 +31,30 @@ public class Cliente implements Serializable {
 	@Column(name="CD_CLIENTE")
 	private Integer codigo;
 	
+	@Min(value=10,message="Nome do cliente precisa ter pelo menos 10 caracteres")
+	@NotNull(message="O campo nome é obrigatório")
 	@Column(name="NM_CLIENTE")
 	private String nome;
 	
+	@NotNull(message="O campo cargo é obrigatório")
 	@Column(name="DS_CARGO")
 	private String cargo;
 	
+	@Min(value=10,message="Endereço precisa ter pelo menos 10 caracteres")
+	@NotNull(message="O campo endereço é obrigatório")
 	@Column(name="DS_ENDERECO")
 	private String endereco;
 	
+	@NotNull(message="O campo cidade é obrigatório")	
 	@Column(name="DS_CIDADE")
 	private String cidade;
 	
+	@NotNull(message="O campo cep é obrigatório")
+	@Pattern(regexp="\\d{5}-\\d{3}",message="Campo CEP precisa estar no padrão 00000-000")
 	@Column(name="DS_CEP")
 	private String cep;
 
+	@NotNull(message="O campo país é obrigatório")
 	@Column(name="DS_PAIS")
 	private String pais;
 	
