@@ -2,6 +2,9 @@ package model.facade;
 
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.executable.ValidateOnExecution;
+
 import model.domain.Cliente;
 
 public interface ClienteFacade {
@@ -10,7 +13,8 @@ public interface ClienteFacade {
 
 	List<Cliente> getClientes(Integer codigo);
 
-	Cliente salvar(Cliente cliente);
+	@ValidateOnExecution
+	Cliente salvar(@Valid Cliente cliente);
 
 	void atualizar(Cliente cliente);
 

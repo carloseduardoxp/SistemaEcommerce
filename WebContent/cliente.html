@@ -13,8 +13,8 @@
 <body ng-controller="clienteControl">
 	<div ng-include="'menu.html'"></div>
 	<div class="panel panel-default">
-		<!-- ALERT -->
-        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+		
+		        
     
 		<div class="panel-heading">Cadastro de cliente</div>
 		<div class="panel-body">
@@ -32,6 +32,8 @@
 			  <div class="tab-content">
 			    <div role="tabpanel" class="tab-pane active" id="cadastro">
 					<br>
+					<span ng-repeat="mensagem in mensagens">{{mensagem}}<br></span>
+					<br>
 					<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
 					<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
 					<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
@@ -45,7 +47,7 @@
 					  
 					  <div class="form-group col-md-6">
 					    <label for="exampleInputNome">Nome</label>
-					    <input type="text" class="form-control" ng-model="cliente.nome" placeholder="Insira o Nome">
+					    <input type="text" class="form-control" ng-model="cliente.nome" placeholder="Insira o Nome" required>
 					  </div>
 					  
 					  <div class="form-group col-md-4">
