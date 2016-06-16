@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -31,7 +32,7 @@ public class Cliente implements Serializable {
 	@Column(name="CD_CLIENTE")
 	private Integer codigo;
 	
-	@Min(value=10,message="Nome do cliente precisa ter pelo menos 10 caracteres")
+	@Size(min=10,message="Nome do cliente precisa ter pelo menos 10 caracteres")
 	@NotNull(message="O campo nome é obrigatório")
 	@Column(name="NM_CLIENTE")
 	private String nome;
@@ -40,7 +41,7 @@ public class Cliente implements Serializable {
 	@Column(name="DS_CARGO")
 	private String cargo;
 	
-	@Min(value=10,message="Endereço precisa ter pelo menos 10 caracteres")
+	@Size(min=10,message="Endereço precisa ter pelo menos 10 caracteres")
 	@NotNull(message="O campo endereço é obrigatório")
 	@Column(name="DS_ENDERECO")
 	private String endereco;
