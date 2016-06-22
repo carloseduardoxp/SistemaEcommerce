@@ -10,9 +10,7 @@ app.controller('clienteControl',function($scope,$http){
 		}).error(function(mensagemErro) {
 			$scope.mensagens.push('Erro ao pesquisar clientes '+mensagemErro);
 		});   
-	}
-	
-	$scope.pesquisar();
+	}		
 	
 	$scope.novo = function(){
 		$scope.cliente = {};
@@ -21,13 +19,14 @@ app.controller('clienteControl',function($scope,$http){
 	
 	$scope.montaMensagemErro = function(listaErro) {
 		$scope.mensagens = [];
+		$scope.mensagens.push('Falha de validação retornada do servidor');
 		angular.forEach(listaErro, function(value, key){
 			 $scope.mensagens.push(value.message);
 		});
 	}
 
-    $scope.salvar = function() {
-		if ($scope.cliente.codigo == undefined || $scope.cliente.codigo == '') {
+    $scope.salvar = function() {    	
+    	if ($scope.cliente.codigo == undefined || $scope.cliente.codigo == '') {
 			$http.post(url,$scope.cliente).success(function(cliente) {
 				$scope.clientes.push($scope.cliente);
 				$scope.novo();
@@ -65,4 +64,7 @@ app.controller('clienteControl',function($scope,$http){
 	$scope.seleciona = function(clienteTabela) {
 		$scope.cliente = clienteTabela;
 	}
+	
+	$scope.pesquisar();
+	$scope.novo();
 });

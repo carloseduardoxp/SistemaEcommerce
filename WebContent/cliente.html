@@ -30,16 +30,27 @@
 			  </ul>
 			  <!-- Tab panes -->
 			  <div class="tab-content">
-			    <div role="tabpanel" class="tab-pane active" id="cadastro">
-					<br>
-					<span ng-repeat="mensagem in mensagens">{{mensagem}}<br></span>
-					<br>
-					<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
-					<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
-					<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
-					<button type="button" class="btn btn-warning" ng-click="pesquisar()">Pesqusiar</button>
-					<hr/>
-			    	<form>
+			    <div role="tabpanel" class="tab-pane active" id="cadastro">					
+			    	<form name="form" class="css-form" ng-submit="form.$valid && salvar()" novalidate>
+				    	<br>
+						<span ng-repeat="mensagem in mensagens">{{mensagem}}<br></span>
+						<div ng-show="form.$submitted">
+						     <div ng-show="form.nome.$error.required">Preencha o nome</div>
+	      				     <div ng-show="form.nome.$error.minlength">Nome precisa ter pelo menos 10 caracteres</div>
+	      				     <div ng-show="form.cargo.$error.required">Preencha o cargo</div>
+	      				     <div ng-show="form.endereco.$error.required">Preencha o Endereço</div>
+	      				     <div ng-show="form.endereco.$error.minlength">Endereço precisa ter pelo menos 10 caracteres</div>
+	      				     <div ng-show="form.cidade.$error.required">Preencha a cidade</div>
+	      				     <div ng-show="form.pais.$error.required">Preencha o país</div>
+	      				     <div ng-show="form.cep.$error.required">Preencha o Cep</div>
+	      				     <div ng-show="form.cep.$error.pattern">Cep deve seguir o padrão 00000-000</div>
+	    				</div>    				
+						<br>
+						<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
+						<button type="submit" class="btn btn-success">Salvar</button>
+						<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
+						<button type="button" class="btn btn-warning" ng-click="pesquisar()">Pesqusiar</button>
+						<hr/>
 					  <div class="form-group col-md-2">
 					    <label for="exampleInputCodigo">Codigo</label>
 					    <input type="number" disabled="true" class="form-control" ng-model="cliente.codigo" placeholder="Codigo">
@@ -47,32 +58,32 @@
 					  
 					  <div class="form-group col-md-6">
 					    <label for="exampleInputNome">Nome</label>
-					    <input type="text" class="form-control" ng-model="cliente.nome" placeholder="Insira o Nome" required>
-					  </div>
+					    <input type="text" class="form-control" ng-model="cliente.nome" name="nome" placeholder="Insira o Nome" required="" ng-minlength="10" />
+					  </div>					  					  
 					  
 					  <div class="form-group col-md-4">
 					    <label for="exampleInputCargo">Cargo</label>
-					    <input type="text" class="form-control" ng-model="cliente.cargo" placeholder="Insira o Cargo">
+					    <input type="text" class="form-control" ng-model="cliente.cargo" name="cargo" placeholder="Insira o Cargo" required="">
 					  </div>
 
 					  <div class="form-group col-md-6">
 					    <label for="exampleInputEndereco">Endereco</label>
-					    <input type="text" class="form-control" ng-model="cliente.endereco" placeholder="Insira o Endereco">
+					    <input type="text" class="form-control" ng-model="cliente.endereco" name="endereco" placeholder="Insira o Endereco" required="" ng-minlength="10">
 					  </div>
 
 					  <div class="form-group col-md-4">
 					    <label for="exampleInputCidade">Cidade</label>
-					    <input type="text" class="form-control" ng-model="cliente.cidade" placeholder="Insira a Cidade">
+					    <input type="text" class="form-control" ng-model="cliente.cidade" name="cidade" placeholder="Insira a Cidade" required="">
 					  </div>
 
 					  <div class="form-group col-md-2">
 					    <label for="exampleInputCep">Cep</label>
-					    <input type="text" class="form-control" ng-model="cliente.cep" placeholder="Insira o Cep">
+					    <input type="text" class="form-control" ng-model="cliente.cep" name="cep" placeholder="Insira o Cep" ng-pattern="/^(\d{5}-\d{3})$/" required="">
 					  </div>
 
 					  <div class="form-group col-md-4">
 					    <label for="exampleInputPais">Pais</label>
-					    <input type="text" class="form-control" ng-model="cliente.pais" placeholder="Insira o Pais">
+					    <input type="text" class="form-control" ng-model="cliente.pais" name="pais" placeholder="Insira o Pais" required="">
 					  </div>
 					  
 					</form>
