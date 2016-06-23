@@ -1,7 +1,6 @@
 var app = angular.module('clienteModule',[]);
 
 app.controller('clienteControl',function($scope,$http){
-	
 	var url = 'http://localhost:8080/SistemaEcommerce/rs/cliente';
 	
 	$scope.pesquisar = function(){
@@ -10,10 +9,16 @@ app.controller('clienteControl',function($scope,$http){
 		}).error(function(mensagemErro) {
 			$scope.mensagens.push('Erro ao pesquisar clientes '+mensagemErro);
 		});   
-	}		
+	}
+	
+	$scope.salvarTelefone = function() {
+		$scope.cliente.telefones.push($scope.telefone);
+		$scope.telefone = {};		
+	}
 	
 	$scope.novo = function(){
 		$scope.cliente = {};
+		$scope.cliente.telefones = [];
 		$scope.mensagens = [];
 	}
 	
@@ -26,9 +31,9 @@ app.controller('clienteControl',function($scope,$http){
 	}
 
     $scope.salvar = function() {    	
-    	if ($scope.cliente.codigo == undefined || $scope.cliente.codigo == '') {
-			$http.post(url,$scope.cliente).success(function(cliente) {
-				$scope.clientes.push($scope.cliente);
+    	if ($scope.cliente.codigo == undefined || $scope.cliente.codigo == '') {    		
+			$http.post(url,$scope.cliente).success(function(clienteRetornado) {
+				$scope.clientes.push(clienteRetornado);
 				$scope.novo();
 				$scope.mensagens.push('Cliente salvo com sucesso');
 			}).error(function (erro) {

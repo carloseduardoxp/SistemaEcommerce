@@ -31,25 +31,25 @@
 			  <!-- Tab panes -->
 			  <div class="tab-content">
 			    <div role="tabpanel" class="tab-pane active" id="cadastro">					
-			    	<form name="form" class="css-form" ng-submit="form.$valid && salvar()" novalidate>
+			    	<form name="clienteForm" class="css-form" ng-submit="clienteForm.$valid && salvar()" novalidate>
 				    	<br>
 						<span ng-repeat="mensagem in mensagens">{{mensagem}}<br></span>
-						<div ng-show="form.$submitted">
-						     <div ng-show="form.nome.$error.required">Preencha o nome</div>
-	      				     <div ng-show="form.nome.$error.minlength">Nome precisa ter pelo menos 10 caracteres</div>
-	      				     <div ng-show="form.cargo.$error.required">Preencha o cargo</div>
-	      				     <div ng-show="form.endereco.$error.required">Preencha o Endereço</div>
-	      				     <div ng-show="form.endereco.$error.minlength">Endereço precisa ter pelo menos 10 caracteres</div>
-	      				     <div ng-show="form.cidade.$error.required">Preencha a cidade</div>
-	      				     <div ng-show="form.pais.$error.required">Preencha o país</div>
-	      				     <div ng-show="form.cep.$error.required">Preencha o Cep</div>
-	      				     <div ng-show="form.cep.$error.pattern">Cep deve seguir o padrão 00000-000</div>
+						<div ng-show="clienteForm.$submitted">
+						     <div ng-show="clienteForm.nome.$error.required">Preencha o nome</div>
+	      				     <div ng-show="clienteForm.nome.$error.minlength">Nome precisa ter pelo menos 10 caracteres</div>
+	      				     <div ng-show="clienteForm.cargo.$error.required">Preencha o cargo</div>
+	      				     <div ng-show="clienteForm.endereco.$error.required">Preencha o Endereço</div>
+	      				     <div ng-show="clienteForm.endereco.$error.minlength">Endereço precisa ter pelo menos 10 caracteres</div>
+	      				     <div ng-show="clienteForm.cidade.$error.required">Preencha a cidade</div>
+	      				     <div ng-show="clienteForm.pais.$error.required">Preencha o país</div>
+	      				     <div ng-show="clienteForm.cep.$error.required">Preencha o Cep</div>
+	      				     <div ng-show="clienteForm.cep.$error.pattern">Cep deve seguir o padrão 00000-000</div>
 	    				</div>    				
 						<br>
 						<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
 						<button type="submit" class="btn btn-success">Salvar</button>
 						<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
-						<button type="button" class="btn btn-warning" ng-click="pesquisar()">Pesqusiar</button>
+						<button type="button" class="btn btn-warning" ng-click="pesquisar()">Pesquisar</button>
 						<hr/>
 					  <div class="form-group col-md-2">
 					    <label for="exampleInputCodigo">Codigo</label>
@@ -81,9 +81,38 @@
 					    <input type="text" class="form-control" ng-model="cliente.cep" name="cep" placeholder="Insira o Cep" ng-pattern="/^(\d{5}-\d{3})$/" required="">
 					  </div>
 
-					  <div class="form-group col-md-4">
+					  <div class="form-group col-md-14">
 					    <label for="exampleInputPais">Pais</label>
 					    <input type="text" class="form-control" ng-model="cliente.pais" name="pais" placeholder="Insira o Pais" required="">
+					  </div>
+					  
+					  <div class="form-group col-md-14">
+					  	<h4>Telefones</h4>
+					    <div class="form-group col-md-2">
+					    	<label for="exampleInputNumero">Numero</label>
+					    	<input type="text" class="form-control" ng-model="telefone.numero" name="telefone" placeholder="Insira o Telefone">
+					  	</div>
+					  	<div class="form-group col-md-2">
+					    	<label for="exampleInputTipo">Tipo</label>
+					    	<select class="form-control" 
+								    ng-model="telefone.tipo">
+								    <option>CELULAR</option>
+								    <option>RESIDENCIAL</option>
+								    <option>COMERCIAL</option>
+								    <option>FAX</option>
+							</select>				            
+					  	</div>
+					  	<hr/>
+					  	<button type="button" class="btn btn-danger" ng-click="salvarTelefone()">Salvar</button>
+						<button type="button" class="btn btn-warning" ng-click="excluirTelefone()">Excluir</button>
+						<hr/>
+					  	<table class="table table-hover">
+			    		<th>Número</th><th>Tipo</th>
+
+			    		<tr ng-repeat="telefoneTabela in cliente.telefones" ng-click="selecionaTelefone(telefoneTabela);">
+			    			<td>{{telefoneTabela.numero}}</td><td>{{telefoneTabela.tipo}}</td>
+			    		</tr>
+					</table>
 					  </div>
 					  
 					</form>

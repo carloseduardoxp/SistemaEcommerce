@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 
 import model.dao.ClienteDao;
 import model.domain.Cliente;
+import model.domain.Telefone;
 import model.facade.ClienteFacade;
 
 @Path("/cliente")
@@ -50,8 +51,11 @@ public class ClienteFacadeImpl implements ClienteFacade {
 	 * @see model.facade.rs.ClienteFacade#salvar(model.domain.Cliente)
 	 */
 	@Override
-	@POST 
+	@POST 	
 	public Cliente salvar(Cliente cliente) { 
+		for (Telefone telefone: cliente.getTelefones()) {
+			telefone.setCliente(cliente);
+		}
 		cliente = clienteDao.salvar(cliente);
 	 	return cliente;
 	}
@@ -62,6 +66,9 @@ public class ClienteFacadeImpl implements ClienteFacade {
 	@Override
 	@PUT 
 	public void atualizar(Cliente cliente) { 
+		for (Telefone telefone: cliente.getTelefones()) {
+			telefone.setCliente(cliente);
+		}
 		clienteDao.atualizar(cliente);
 	}
 

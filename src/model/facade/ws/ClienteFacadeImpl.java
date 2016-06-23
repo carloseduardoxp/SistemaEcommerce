@@ -9,6 +9,7 @@ import javax.jws.WebService;
 
 import model.dao.ClienteDao;
 import model.domain.Cliente;
+import model.domain.Telefone;
 import model.facade.ClienteFacade;
 
 @WebService(serviceName="ws/cliente")
@@ -33,11 +34,17 @@ public class ClienteFacadeImpl implements ClienteFacade {
 	
 	@WebMethod
 	public Cliente salvar(@WebParam(name="cliente") Cliente cliente) {
+		for (Telefone telefone: cliente.getTelefones()) {
+			telefone.setCliente(cliente);
+		}
 		return clienteDao.salvar(cliente);
 	}
 	
 	@WebMethod
 	public void atualizar(@WebParam(name="cliente") Cliente cliente) {
+		for (Telefone telefone: cliente.getTelefones()) {
+			telefone.setCliente(cliente);
+		}
 		clienteDao.atualizar(cliente);
 	}
 	
